@@ -62,6 +62,7 @@
     }
   },
   "browserslist": [
+    "> 1%",
     "IE > 11"
   ],
   "author": "Wolfgang Wedemeyer <wolf@okwolf.com>",
