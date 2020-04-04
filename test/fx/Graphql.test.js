@@ -10,7 +10,7 @@ describe("Graphql effect", () => {
       query example {
         id
       }
-    `;
+    `
     global.fetch = (url, options) => {
       expect(url).toBe(testUrl)
       expect(options).toEqual({
@@ -27,11 +27,11 @@ describe("Graphql effect", () => {
     }
 
     const action = jest.fn()
-    const httpFx = gql({ query, action });
+    const httpFx = gql({ query, action })
     const { dispatch } = runFx(httpFx)
 
     process.nextTick(() => {
-      expect(dispatch).toBeCalledWith(action, { response: { id: "1" }})
+      expect(dispatch).toBeCalledWith(action, { response: { id: "1" } })
       delete global.fetch
       done()
     })
@@ -44,7 +44,7 @@ describe("Graphql effect", () => {
           id
         }
       }
-    `;
+    `
     const variables = {
       id: 1
     }
@@ -64,11 +64,11 @@ describe("Graphql effect", () => {
     }
 
     const action = jest.fn()
-    const httpFx = gql({ query, variables, action });
+    const httpFx = gql({ query, variables, action })
     const { dispatch } = runFx(httpFx)
 
     process.nextTick(() => {
-      expect(dispatch).toBeCalledWith(action, { response: { id: "1" }})
+      expect(dispatch).toBeCalledWith(action, { response: { id: "1" } })
       delete global.fetch
       done()
     })

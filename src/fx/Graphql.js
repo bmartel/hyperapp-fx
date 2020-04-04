@@ -1,7 +1,12 @@
-import { Http } from "./Http";
+import { Http } from "./Http"
 
-export const Graphql = (props = {}) =>
-  ({ url, query, variables, options = {}, ...httpProps } = {}) =>
+export const Graphql = (props = {}) => ({
+  url,
+  query,
+  variables,
+  options = {},
+  ...httpProps
+} = {}) =>
   Http({
     ...props,
     ...httpProps,
@@ -12,9 +17,9 @@ export const Graphql = (props = {}) =>
       ...(props.options || {}),
       ...options,
       headers: {
-        'content-type': 'application/json',
+        "content-type": "application/json",
         ...((props.options || {}).headers || {}),
         ...(options.headers || {})
-      },
-    },
-  });
+      }
+    }
+  })
