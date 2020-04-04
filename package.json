@@ -27,7 +27,7 @@
     "doc": "jsdoc2md src/fx/*.js src/subs/*.js > api.md",
     "bundle": "rollup -i src/index.js -o dist/hyperappFx.js -m -f umd -n hyperappFx",
     "minify": "uglifyjs dist/hyperappFx.js -o dist/hyperappFx.js -mc pure_funcs=['Object.defineProperty'] --source-map includeSources,url=hyperappFx.js.map",
-    "check": "npm run format:check && npm run lint && npm t",
+    "check": "npm run format:check && npm t",
     "build": "npm run check && npm run bundle && npm run minify",
     "prepare": "npm run build && npm run doc",
     "release": "./pre-flight-tests && npm run clean && npm i && ./pre-flight-tests && git tag $npm_package_version && git push && git push --tags && npm publish --tag next"
@@ -62,7 +62,7 @@
     }
   },
   "browserslist": [
-    "IE 10"
+    "IE > 11"
   ],
   "author": "Wolfgang Wedemeyer <wolf@okwolf.com>",
   "license": "MIT",
