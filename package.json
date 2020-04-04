@@ -1,6 +1,6 @@
 {
   "name": "@martel/hyperapp-fx",
-  "version": "2.0.0-beta.2",
+  "version": "2.0.0-beta.4",
   "description": "Effects for use with Hyperapp",
   "main": "dist/hyperappFx.js",
   "module": "src/index.js",
