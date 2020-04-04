@@ -16,7 +16,8 @@
     "jsdom": "=14.0.0",
     "prettier": "=1.16.4",
     "rollup": "=1.7.2",
-    "uglify-js": "=3.5.2"
+    "rollup-plugin-terser": "=5.3.0",
+    "terser": "=4.6.10"
   },
   "scripts": {
     "clean": "npx rimraf coverage dist node_modules",
@@ -25,10 +26,9 @@
     "lint": "eslint {src,test}/**/*.js",
     "test": "jest --coverage --no-cache",
     "doc": "jsdoc2md src/fx/*.js src/subs/*.js > api.md",
-    "bundle": "rollup -i src/index.js -o dist/hyperappFx.js -m -f umd -n hyperappFx",
-    "minify": "uglifyjs dist/hyperappFx.js -o dist/hyperappFx.js -mc pure_funcs=['Object.defineProperty'] --source-map includeSources,url=hyperappFx.js.map",
+    "bundle": "rollup -c",
     "check": "npm run format:check && npm t",
-    "build": "npm run check && npm run bundle && npm run minify",
+    "build": "npm run check && npm run bundle",
     "prepare": "npm run build && npm run doc",
     "release": "./pre-flight-tests && npm run clean && npm i && ./pre-flight-tests && git tag $npm_package_version && git push && git push --tags && npm publish --tag next"
   },
@@ -62,8 +62,11 @@
     }
   },
   "browserslist": [
-    "> 1%",
-    "IE > 11"
+    "> 0.5%",
+    "last 2 versions",
+    "Firefox ESR",
+    "not dead",
+    "not IE 11"
   ],
   "author": "Wolfgang Wedemeyer <wolf@okwolf.com>",
   "license": "MIT",
